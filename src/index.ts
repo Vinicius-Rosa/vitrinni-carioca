@@ -1,4 +1,4 @@
-import Home from './screens/Home.component';
+import Home from './screens/Home.screen';
 
 export {
     Home,

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useMemo } from 'react';
 import Sidebar from '../../admin/components/Sidebar.component';
+import Header from '../Header';
 
 import { Container, Content } from './styles';
 
@@ -12,6 +13,8 @@ const Layout: React.FC = ({ children }) => {
 
     return <Container>
         {isAdmin && <Sidebar />}
+
+        {!isAdmin && <Header />}
 
         <Content isAdmin={isAdmin}>
             {children}
