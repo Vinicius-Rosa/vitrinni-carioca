@@ -7,9 +7,8 @@ interface Props {
 export const Container = styled.div``;
 
 export const Content = styled.div<Props>`
-    margin-left: ${({ isAdmin }) => isAdmin ? "256px" : "unset"};
-    padding: 50px;
+    padding: ${({ isAdmin }) => !!isAdmin ? "50px" : "unset"};
+    padding-left: ${({ isAdmin }) => !!isAdmin ? "calc(256px + 50px)" : "unset"};
 
-    max-width: 1200px;
     margin: 0 auto;
 `;

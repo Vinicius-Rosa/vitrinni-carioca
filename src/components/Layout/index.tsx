@@ -12,9 +12,7 @@ const Layout: React.FC = ({ children }) => {
     console.log("isAdmin", isAdmin)
 
     return <Container>
-        {isAdmin && <Sidebar />}
-
-        {!isAdmin && <Header />}
+        {isAdmin ? <Sidebar /> : <Header />}
 
         <Content isAdmin={isAdmin}>
             {children}

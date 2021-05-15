@@ -114,3 +114,10 @@ button::-moz-focus-inner {
     border: 0;
     padding: 0;
 }
+
+.dots{
+  height: 20px;
+  width: 20px;
+
+  border-radius: 10px;
+}
