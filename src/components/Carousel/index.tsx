@@ -1,21 +1,22 @@
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 
 import { Carousel as AntdCarousel } from "antd";
 
-import { Container, Img } from './styles';
-
-import img1 from '../../assets/img1.png'
+import { Container, Img, ShadowCarousel } from './styles';
 
 interface CarouselProps {
   children?: ReactNode;
+  images: string[];
 }
 
-function Carousel({ children }: CarouselProps) {
+function Carousel({ children, images = [] }: CarouselProps) {
+  const imgRender = useMemo(() => images.map(img => <Img src={img} alt="dale" />), [images])
+
   return (
     <Container>
+      <ShadowCarousel />
       <AntdCarousel>
-        <Img src={img1} alt="dale" />
-        <Img src={img1} alt="dale" />
+        {imgRender}
       </AntdCarousel>
     </Container>
   );

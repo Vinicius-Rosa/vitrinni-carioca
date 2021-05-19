@@ -1,9 +1,9 @@
 :root{
     /* -------------- COLORS -------------- */
     --primary-color: #AE7A2D;
-	--secondary-color: #FBFBF2;
-	--tertiary-color: #231F20;
-	--default-grey: rgba(0,0,0,0.4);
+    --secondary-color: #FBFBF2;
+    --tertiary-color: #231F20;
+    --default-grey: rgba(0,0,0,0.4);
 }
 
 @font-face {
