@@ -10,7 +10,7 @@ interface CarouselProps {
 }
 
 function Carousel({ children, images = [] }: CarouselProps) {
-  const imgRender = useMemo(() => images.map(img => <Img src={img} alt="dale" />), [images])
+  const imgRender = useMemo(() => images.map((img, i) => <Img src={img} key={i} alt="" />), [images])
 
   return (
     <Container>
