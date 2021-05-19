@@ -115,9 +115,53 @@ button::-moz-focus-inner {
     padding: 0;
 }
 
-.dots{
-  height: 20px;
-  width: 20px;
 
-  border-radius: 10px;
+/* ANT CAROUSEL OVERRIDE */
+
+.slick-dots{
+  position: relative;
+}
+
+.slick-dots::before, .slick-dots::after{
+    position: absolute;
+    left: 15px;
+
+    content: '';
+    height: 3px;
+    width: calc(300px - 60px - 15px);
+
+    background-color: var(--tertiary-color);
+}
+
+.slick-dots::after{
+    left: unset;
+    right: 15px;
+}
+
+.ant-carousel .slick-dots-bottom{
+    top: 80vh !important;
+    bottom: unset !important;
+}
+
+.ant-carousel .slick-dots li button {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 10px !important;
+  
+    background: var(--tertiary-color) !important;
+
+    position: relative !important;
+    top: -8px !important;
+}
+
+.ant-carousel .slick-dots li.slick-active{
+  width: unset !important;
+}
+
+.ant-carousel .slick-dots li{
+  width: unset !important;
+}
+
+.ant-carousel .slick-dots li.slick-active button{
+  background: var(--primary-color) !important;
 }

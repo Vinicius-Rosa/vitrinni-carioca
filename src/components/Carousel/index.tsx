@@ -1,6 +1,10 @@
 import { ReactNode } from 'react';
 
-import { Container } from './styles';
+import { Carousel as AntdCarousel } from "antd";
+
+import { Container, Img } from './styles';
+
+import img1 from '../../assets/img1.png'
 
 interface CarouselProps {
   children?: ReactNode;
@@ -9,8 +13,10 @@ interface CarouselProps {
 function Carousel({ children }: CarouselProps) {
   return (
     <Container>
-      <h1>Carousel</h1>
-      {children}
+      <AntdCarousel>
+        <Img src={img1} alt="dale" />
+        <Img src={img1} alt="dale" />
+      </AntdCarousel>
     </Container>
   );
 };

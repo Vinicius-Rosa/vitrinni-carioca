@@ -15,18 +15,6 @@ export const Hero = styled.div`
 export const Content = styled.div`
   flex: 1;
 `;
-export const CarouselContainer = styled.div`
-  position: absolute;
-  right: 0;
-
-  width: 600px;
-
-  z-index: 1;
-`;
-
-export const Img = styled.img`
-  height: 100vh;
-`;
 
 export const TitleContainer = styled.div`
   position: relative;

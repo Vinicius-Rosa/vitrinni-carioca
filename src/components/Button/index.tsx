@@ -17,7 +17,7 @@ function Button({ children }: ButtonProps) {
         onMouseLeave={() => isHovering(false)}
       >
         <Line data-label="line" />
-        {children}
+        <span>{children}</span>
       </TheButton>
     </Container>
   );

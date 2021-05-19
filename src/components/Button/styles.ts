@@ -65,6 +65,10 @@ export const TheButton = styled.button`
         z-index: 10;
     }
 
+    &, & > span {
+        transition: .4s;
+    }
+
     /* LINE ANIMATION */
     &::before,
     &::after,
@@ -84,6 +88,14 @@ export const TheButton = styled.button`
     &:hover::after{
         opacity: 1;
         transform: rotate(-45deg);
+    }
+
+    &:hover {
+        padding-right: 20px;
+    }
+
+    &:hover > span{
+        margin-left: 5px;
     }
 
 `;

@@ -8,16 +8,12 @@ import {
     ShortDescription,
     ProjectSection,
     Content,
-    CarouselContainer,
-    Img,
 } from "./Home.styles";
 
 import Line from '../assets/Line.svg'
 import Button from "../components/Button";
-import { Carousel } from "antd";
-// import Carousel from "../components/Carousel";
 
-import img1 from '../assets/img1.png'
+import Carousel from "../components/Carousel";
 
 export default function Home() {
     return (
@@ -38,12 +34,8 @@ export default function Home() {
                     <Button>Descubra nossos diferenciais</Button>
                 </Content>
 
-                <CarouselContainer>
-                    <Carousel dots={{ className: "dots" }} >
-                        <Img src={img1} alt="dale" />
-                        <Img src={img1} alt="dale" />
-                    </Carousel>
-                </CarouselContainer>
+
+                <Carousel />
             </Hero>
 
             <ProjectSection>
