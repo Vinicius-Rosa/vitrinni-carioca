@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Container = styled.header`
+export const Container = styled(motion.header)`
     max-width: 1200px;
 
     display: flex;

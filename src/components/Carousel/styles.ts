@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -9,7 +10,7 @@ export const Container = styled.div`
   z-index: 1;
 `;
 
-export const ShadowCarousel = styled.div`
+export const ShadowCarousel = styled(motion.div)`
   position: absolute;
   top: 50px;
   left: -50px;
@@ -24,3 +25,5 @@ export const ShadowCarousel = styled.div`
 export const Img = styled.img`
   height: 90vh;
 `;
+
+export const CarouselWrapper = styled(motion.div)``;

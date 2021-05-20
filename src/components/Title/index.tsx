@@ -29,12 +29,6 @@ function Title({ children, theme = Theme.light }: TitleProps) {
       lineAnimation.start({ width: "80px", opacity: 1, });
       shadowAnimation.start({ y: 0, opacity: 1, });
     }
-
-    // if (!inView) {
-    //   animation.start({ y: -50, opacity: 0, });
-    //   shadowAnimation.start({ y: -50, opacity: 0, });
-    //   shadowAnimation.start({ width: 0, opacity: 0, });
-    // }
   }, [inView]);
 
   return (

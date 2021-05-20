@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface Props {
     hovering?: boolean;
@@ -9,7 +10,7 @@ export const Container = styled.div`
     position: relative;
 `;
 
-export const TheButton = styled.button`
+export const TheButton = styled(motion.button)`
     position: relative;
 
     display: flex;
