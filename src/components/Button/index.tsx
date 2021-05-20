@@ -4,14 +4,15 @@ import { Container, TheButton, Line, ShadowButton } from './styles';
 
 interface ButtonProps {
   children: ReactNode;
+  light?: boolean;
 }
 
-function Button({ children }: ButtonProps) {
+function Button({ children, light = false }: ButtonProps) {
   const [hovering, isHovering] = useState<boolean>(false);
 
   return (
     <Container>
-      <ShadowButton hovering={hovering} />
+      <ShadowButton hovering={hovering} light={light} />
       <TheButton
         onMouseOver={() => isHovering(true)}
         onMouseLeave={() => isHovering(false)}

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Container = styled.div``;
@@ -16,7 +17,7 @@ export const Content = styled.div`
   flex: 1;
 `;
 
-export const ShortDescription = styled.p`
+export const ShortDescription = styled(motion.p)`
     margin-top: 30px;
     max-width: 500px;
 
@@ -34,4 +35,12 @@ export const ProjectContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 100px;
 `;

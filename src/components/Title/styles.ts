@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface Props {
-    theme: string;
+  theme: string;
 }
 
 export const Container = styled.div`
@@ -10,7 +11,14 @@ export const Container = styled.div`
   margin-top: 50px;
 `;
 
-export const Title = styled.h1`
+export const Line = styled(motion.div) <Props>`
+  height: 2px;
+  width: 80px;
+
+  background-color: ${({ theme }) => theme === 'light' ? "#231F2066" : "rgba(251, 251, 242, 0.4)"};
+`;
+
+export const Title = styled(motion.h1)`
   font-weight: bold;
   font-size: 94px;
   color: ${({ theme }) => theme === 'light' ? "inherit" : "var(--secondary-color)"};
@@ -18,7 +26,7 @@ export const Title = styled.h1`
   margin-bottom: 0;
 `;
 
-export const TitleShadow = styled.h1<Props>`
+export const TitleShadow = styled(motion.h1) <Props>`
   position: absolute;
   top: -18px;
   left: 10px;

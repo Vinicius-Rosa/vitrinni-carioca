@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 interface Props {
-    hovering: boolean;
+    hovering?: boolean;
+    light?: boolean;
 }
 
 export const Container = styled.div`
@@ -15,8 +16,7 @@ export const TheButton = styled.button`
     align-items: center;
     justify-content: flex-start;
 
-    min-width: 200px;
-    max-width: 300px;
+    min-width: 300px;
 
     height: 50px;
 
@@ -127,7 +127,7 @@ export const ShadowButton = styled(TheButton) <Props>`
     width: 300px;
 
     background-color: transparent;
-    border: 2px solid var(--default-grey);
+    border: 2px solid ${({ light }) => light ? "var(--secondary-color)" : "var(--default-grey)"};
     
     pointer-events: none;
     z-index: 0;

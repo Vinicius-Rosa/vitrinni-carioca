@@ -14,7 +14,7 @@ export const ShadowCarousel = styled.div`
   top: 50px;
   left: -50px;
 
-  height: calc(80vh - 50px);
+  height: calc(80vh - 100px);
   width: 600px;
 
   background-color: transparent;
