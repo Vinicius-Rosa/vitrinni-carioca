@@ -112,7 +112,7 @@ export const Line = styled.div<Props>`
         content: '';
 
         position: absolute;
-        top: ${({ light }) => light ? "-1px" : "unset"};
+        /* top: ${({ light }) => light ? "-1px" : "unset"}; */
         left: -5px;
         
         height: 1px;

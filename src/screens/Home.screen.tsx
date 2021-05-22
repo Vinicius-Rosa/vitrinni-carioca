@@ -27,9 +27,7 @@ export default function Home() {
     const descAnimation = useAnimation();
 
     useEffect(() => {
-        if (!!inView) {
-            descAnimation.start({ y: 0, opacity: 1, });
-        }
+        if (!!inView) descAnimation.start({ y: 0, opacity: 1, });
     }, [inView]);
 
     return (

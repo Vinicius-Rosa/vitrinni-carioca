@@ -7,10 +7,12 @@ import { useAnimation } from "framer-motion";
 
 interface ButtonProps {
   children: ReactNode;
+  type?: "button" | "submit" | "reset";
   light?: boolean;
+  removeShadow?: boolean;
 }
 
-function Button({ children, light = false }: ButtonProps) {
+function Button({ children, type = "button", light = false, removeShadow = false }: ButtonProps) {
   const [hovering, isHovering] = useState<boolean>(false);
 
   const { ref: buttonRef, inView } = useInView({ threshold: .2 });
@@ -30,6 +32,7 @@ function Button({ children, light = false }: ButtonProps) {
       <ShadowButton
         hovering={hovering}
         light={light}
+        hidden={removeShadow}
 
         animate={shadowAnimation}
         initial={{ y: 50, opacity: 0, }}
@@ -40,6 +43,7 @@ function Button({ children, light = false }: ButtonProps) {
         }}
       />
       <TheButton
+        type={type}
         light={light}
         ref={buttonRef}
         animate={animation}

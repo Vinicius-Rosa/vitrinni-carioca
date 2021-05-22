@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
     display: flex;
     flex-direction: column;
 
@@ -28,14 +29,13 @@ export const ResetInput = styled.input`
 `;
 
 export const InnerInput = styled(ResetInput)`
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 
     height: 40px;
     width: 100%;
-    opacity: .4;
 
     &:focus{
-        opacity: 1;
+        border-bottom: 1px solid rgba(255, 255, 255, 1);
     }
 
     transition: .4s;
