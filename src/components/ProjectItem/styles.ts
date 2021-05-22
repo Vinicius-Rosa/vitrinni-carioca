@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface Props {
@@ -17,7 +18,7 @@ export const Container = styled.div<Props>`
     margin-top: 100px;
 `;
 
-export const ImgShadow = styled.div<Props>`
+export const ImgShadow = styled(motion.div) <Props>`
     position: absolute;
     top: -20px;
     left: ${({ inverted }) => inverted ? "unset" : "20px"};
@@ -36,7 +37,7 @@ export const ImgShadow = styled.div<Props>`
     opacity: 0.4;
 `;
 
-export const Title = styled.h1`
+export const Title = styled(motion.h1)`
     font-family: "Cinzel", serif;
     font-size: 4rem;
     text-transform: uppercase;
@@ -51,7 +52,7 @@ export const Title = styled.h1`
     }
 `;
 
-export const Img = styled.div<Props>`
+export const Img = styled(motion.div) <Props>`
     background-image: url(${({ img }) => img});
     background-repeat: no-repeat;
     background-position: center;
