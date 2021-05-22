@@ -76,7 +76,7 @@ function Contact({ }: ContactProps) {
           <Form onSubmit={sendRequest}>
             <Row justify="space-between" style={{ gap: "20px" }}>
               <Input label="Nome" name="name" value={formValues.name} onChange={handleChange} />
-              <Input label="Email" name="email" value={formValues.email} onChange={handleChange} />
+              <Input type="email" label="Email" name="email" value={formValues.email} onChange={handleChange} />
             </Row>
             <Input label="Assunto" name="subject" value={formValues.subject} onChange={handleChange} />
             <Input

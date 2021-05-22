@@ -120,6 +120,10 @@ button::-moz-focus-inner {
     padding: 0;
 }
 
+/* input:-internal-autofill-selected {
+  background-color: unset !important;
+} */
+
 
 /* ANT CAROUSEL OVERRIDE */
 

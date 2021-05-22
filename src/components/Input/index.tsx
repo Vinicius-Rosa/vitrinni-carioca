@@ -54,6 +54,8 @@ function Input({ type = "text", label, value, name, onChange, style }: InputProp
           name={name}
           value={value}
           onChange={handleChange}
+
+          autoComplete="off"
         />
       }
 
