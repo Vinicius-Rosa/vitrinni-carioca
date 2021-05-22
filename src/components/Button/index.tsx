@@ -13,7 +13,7 @@ interface ButtonProps {
 function Button({ children, light = false }: ButtonProps) {
   const [hovering, isHovering] = useState<boolean>(false);
 
-  const { ref: buttonRef, inView } = useInView({ threshold: .8 });
+  const { ref: buttonRef, inView } = useInView({ threshold: .2 });
   const animation = useAnimation();
   const shadowAnimation = useAnimation();
 
