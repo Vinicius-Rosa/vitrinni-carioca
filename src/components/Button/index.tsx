@@ -56,6 +56,9 @@ function Button({ children, type = "button", light = false, removeShadow = false
 
         onMouseOver={() => isHovering(true)}
         onMouseLeave={() => isHovering(false)}
+
+        // Prevent submit query
+        value=""
       >
         <Line data-label="line" light={light} />
         <span>{children}</span>

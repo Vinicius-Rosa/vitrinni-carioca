@@ -16,14 +16,13 @@ const Layout: React.FC = ({ children }) => {
 
         <Content isAdmin={isAdmin}>
             {children}
-
-            {!isAdmin && <>
-                <Contact />
-
-                <Footer />
-            </>}
         </Content>
 
+        {!isAdmin && <>
+            <Contact />
+
+            <Footer />
+        </>}
 
     </Container>;
 }
