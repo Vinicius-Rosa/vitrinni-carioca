@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-export const Hero = styled.div`
+export const Hero = styled.section`
   display: flex;
   justify-content: space-between;
 
@@ -27,7 +27,7 @@ export const ShortDescription = styled(motion.p)`
 `;
 
 
-export const ProjectSection = styled.div`
+export const ProjectSection = styled.section`
   background-color: var(--tertiary-color);
 `;
 
