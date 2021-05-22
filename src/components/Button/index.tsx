@@ -21,7 +21,7 @@ function Button({ children, light = false }: ButtonProps) {
   useEffect(() => {
     if (!!inView) {
       animation.start({ y: 0, opacity: 1, });
-      shadowAnimation.start({ y: 0, opacity: 1, });
+      shadowAnimation.start({ y: 0, opacity: 0.4, });
     }
   }, [inView]);
 
