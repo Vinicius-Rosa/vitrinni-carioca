@@ -58,7 +58,9 @@ function ProjectItem({ images, title, inverted = false }: ProjectItemProps) {
           duration: 0.5,
           delay: 0.2,
         }}
-      >{title}</Title>
+      >
+        {title}
+      </Title>
     </Container>
   );
 };

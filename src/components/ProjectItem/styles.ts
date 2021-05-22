@@ -16,6 +16,13 @@ export const Container = styled.div<Props>`
     flex-direction: ${({ inverted }) => inverted ? "row-reverse" : "row"};
 
     margin-top: 100px;
+
+    @media (max-width: 1240px) {
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const ImgShadow = styled(motion.div) <Props>`
@@ -49,6 +56,10 @@ export const Title = styled(motion.h1)`
 
     &:hover{
         opacity: .8;
+    }
+
+    @media (max-width: 1240px) {
+        font-size: 2rem;
     }
 `;
 

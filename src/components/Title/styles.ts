@@ -8,6 +8,11 @@ interface Props {
 export const Container = styled.div`
   position: relative;
 
+  @media (max-width: 1240px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   margin-top: 50px;
 `;
 
@@ -16,6 +21,10 @@ export const Line = styled(motion.div) <Props>`
   width: 80px;
 
   background-color: ${({ theme }) => theme === 'light' ? "#231F2066" : "rgba(251, 251, 242, 0.4)"};
+
+  @media (max-width: 1240px) {
+    margin: 0 auto;
+  }
 `;
 
 export const Title = styled(motion.h1)`
@@ -24,6 +33,7 @@ export const Title = styled(motion.h1)`
   color: ${({ theme }) => theme === 'light' ? "inherit" : "var(--secondary-color)"};
 
   margin-bottom: 0;
+  width: 100%;
 `;
 
 export const TitleShadow = styled(motion.h1) <Props>`
@@ -42,4 +52,9 @@ export const TitleShadow = styled(motion.h1) <Props>`
   margin-bottom: 0;
   z-index: 2;
   pointer-events: none;
+  width: 100%;
+
+  @media (max-width: 1240px) {
+    display: none;
+  }
 `;

@@ -3,6 +3,7 @@ import { useEffect, useMemo } from 'react';
 import { Carousel as AntdCarousel } from "antd";
 
 import { Container, Img, ShadowCarousel, CarouselWrapper } from './styles';
+import useWindowSize from '../../hooks/useWindowSize';
 
 interface CarouselProps {
   images: string[];
@@ -10,6 +11,8 @@ interface CarouselProps {
 
 function Carousel({ images = [] }: CarouselProps) {
   const imgRender = useMemo(() => images.map((img, i) => <Img src={img} key={i} alt="" />), [images])
+
+  const { width } = useWindowSize();
 
   return (
     <Container>
@@ -31,7 +34,7 @@ function Carousel({ images = [] }: CarouselProps) {
           delay: 0.6,
         }}
       >
-        <AntdCarousel autoplay>
+        <AntdCarousel autoplay dots={width >= 1250}>
           {imgRender}
         </AntdCarousel>
       </CarouselWrapper>

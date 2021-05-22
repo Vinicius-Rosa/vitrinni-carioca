@@ -12,9 +12,26 @@ export const Hero = styled.section`
 
   padding: 0 50px;
   margin: 0 auto;
+
+  @media (max-width: 1240px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+    height: unset;
+  }
 `;
 export const Content = styled.div`
   flex: 1;
+
+  @media (max-width: 1240px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 50px;
+  }
 `;
 
 export const ShortDescription = styled(motion.p)`

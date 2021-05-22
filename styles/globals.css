@@ -170,3 +170,9 @@ button::-moz-focus-inner {
 .ant-carousel .slick-dots li.slick-active button{
   background: var(--primary-color) !important;
 }
+
+@media (max-width: 1240px) {
+    ul.slick-dots ul.slick-dots-bottom{
+      display: none !important;
+    }
+  }
