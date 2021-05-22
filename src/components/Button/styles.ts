@@ -10,7 +10,7 @@ export const Container = styled.div`
     position: relative;
 `;
 
-export const TheButton = styled(motion.button)`
+export const TheButton = styled(motion.button) <Props>`
     position: relative;
 
     display: flex;
@@ -41,7 +41,7 @@ export const TheButton = styled(motion.button)`
         height: 1px;
         width: 8px;
 
-        background-color: var(--secondary-color);
+        background-color: ${({ light }) => light ? "var(--tertiary-color)" : "var(--secondary-color)"};
 
         -webkit-backface-visibility: hidden;
         transform: rotate(0);
@@ -59,7 +59,7 @@ export const TheButton = styled(motion.button)`
         height: 1px;
         width: 8px;
 
-        background-color: var(--secondary-color);
+        background-color: ${({ light }) => light ? "var(--tertiary-color)" : "var(--secondary-color)"};
 
         -webkit-backface-visibility: hidden;
         transform: rotate(0);
@@ -79,6 +79,7 @@ export const TheButton = styled(motion.button)`
 
     &:hover > [data-label="line"]::before{
         left: 0;
+        background: ${({ light }) => light ? "var(--tertiary-color)" : "var(--secondary-color)"};
     }
 
     &:hover::before{
@@ -93,6 +94,8 @@ export const TheButton = styled(motion.button)`
 
     &:hover {
         padding-right: 20px;
+        background-color: ${({ light }) => light ? "var(--secondary-color)" : "var(--tertiary-color)"};
+        color: ${({ light }) => light ? "var(--tertiary-color)" : "var(--secondary-color)"};
     }
 
     &:hover > span{
@@ -101,7 +104,7 @@ export const TheButton = styled(motion.button)`
 
 `;
 
-export const Line = styled.div`
+export const Line = styled.div<Props>`
     position: relative;
     width: 25px;
 
@@ -109,6 +112,7 @@ export const Line = styled.div`
         content: '';
 
         position: absolute;
+        top: ${({ light }) => light ? "-1px" : "unset"};
         left: -5px;
         
         height: 1px;

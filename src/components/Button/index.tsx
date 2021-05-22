@@ -40,6 +40,7 @@ function Button({ children, light = false }: ButtonProps) {
         }}
       />
       <TheButton
+        light={light}
         ref={buttonRef}
         animate={animation}
         initial={{ y: 50, opacity: 0, }}
@@ -52,7 +53,7 @@ function Button({ children, light = false }: ButtonProps) {
         onMouseOver={() => isHovering(true)}
         onMouseLeave={() => isHovering(false)}
       >
-        <Line data-label="line" />
+        <Line data-label="line" light={light} />
         <span>{children}</span>
       </TheButton>
     </Container>
