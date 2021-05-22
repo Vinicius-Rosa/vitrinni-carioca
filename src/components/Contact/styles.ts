@@ -5,7 +5,7 @@ export const Section = styled.section`
     max-width: 1200px;
     min-height: 80vh;
 
-    padding: 50px;
+    padding: 100px 50px;
     margin: 0 auto;
 `;
 
