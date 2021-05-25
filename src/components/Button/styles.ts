@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 interface Props {
     hovering?: boolean;
     light?: boolean;
+    size?: 'small' | undefined;
 }
 
 export const Container = styled.div`
@@ -17,7 +18,7 @@ export const TheButton = styled(motion.button) <Props>`
     align-items: center;
     justify-content: flex-start;
 
-    min-width: 300px;
+    min-width: ${({ size }) => size === 'small' ? 'unset' : '300px'};
 
     height: 50px;
 

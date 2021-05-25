@@ -42,6 +42,17 @@ export const ImgShadow = styled(motion.div) <Props>`
 
     z-index: 0;
     opacity: 0.4;
+
+    @media (max-width: 1240px) {
+        left: ${({ inverted }) => inverted ? "unset" : "10px"};
+        right: ${({ inverted }) => inverted ? "10px" : "unset"};
+        
+        top: -10px;
+        min-width: 290px;
+        width: 290px;
+        min-height: 290px;
+        height: 290px;
+    }
 `;
 
 export const Title = styled(motion.h1)`

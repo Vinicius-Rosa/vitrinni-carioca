@@ -1,4 +1,4 @@
-import { m, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Section = styled.section`
@@ -7,6 +7,10 @@ export const Section = styled.section`
 
     padding: 100px 50px;
     margin: 0 auto;
+
+    @media (max-width: 1240px) {
+        padding: 50px 25px;
+    }
 `;
 
 export const Container = styled.section`
@@ -26,6 +30,10 @@ export const ContactForm = styled(motion.div)`
     padding: 50px;
 
     z-index: 2;
+
+    @media (max-width: 1240px) {
+        padding: 25px;
+    }
 `;
 
 export const Shadow = styled(motion.div)`
@@ -42,11 +50,22 @@ export const Shadow = styled(motion.div)`
     background-color: transparent;
 
     z-index: 0;
+
+    @media (max-width: 1240px) {
+        /* display: none; */
+
+        top: -15px;
+        left: 15px;
+    }
 `;
 
 export const Title = styled(motion.h1)`
     font-size: 2.8rem;
     color: var(--secondary-color);
+
+    @media (max-width: 1240px) {
+        font-size: 2rem;
+    }
 `;
 
 export const Form = styled.form`
@@ -59,4 +78,21 @@ export const Form = styled.form`
 export const SubmitWrapper = styled.div`
     display: block;
     margin: 0 auto;
+`;
+
+export const Row = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: 1240px) {
+        align-items: flex-start;
+        flex-direction: column; 
+        gap: 40px;
+
+        & > div {
+            width: 100%;
+        }
+    }
 `;
