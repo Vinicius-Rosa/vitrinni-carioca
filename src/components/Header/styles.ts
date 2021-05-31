@@ -22,7 +22,11 @@ export const Img = styled.img`
 export const RoutesContainer = styled.ul`
     display: flex;
     align-items: center;
-    gap: 40px;    
+    gap: 40px;
+
+    @media (max-width: 1240px) {
+        display: none;
+    }
 `;
 
 export const GoesTo = styled.li`
@@ -40,5 +44,13 @@ export const GoesTo = styled.li`
     &:not(:last-of-type){
         padding-right: 40px;
         border-right: 1px solid var(--primary-color);
+    }
+`;
+
+export const HamburgerContainer = styled.div`
+    display: none;
+    
+    @media (max-width: 1240px) {
+        display: block;
     }
 `;

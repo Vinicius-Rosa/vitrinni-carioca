@@ -1,13 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { Fade as Hamburger } from 'hamburger-react'
+
 import Logo from '../../assets/logo.svg';
 
-import { Container, RoutesContainer, GoesTo } from './styles';
-import useWindowSize from '../../hooks/useWindowSize';
+import { Container, RoutesContainer, GoesTo, HamburgerContainer } from './styles';
 
 const Header: React.FC = () => {
-  const { width } = useWindowSize();
+  const [toggle, isToggle] = React.useState<boolean>(false);
+
+  const toggleHandler = React.useCallback(() => {
+    isToggle(current => !current)
+  }, [])
+
+  console.log(toggle)
 
   return <Container
     initial={{ opacity: 0 }}
@@ -20,7 +27,7 @@ const Header: React.FC = () => {
   >
     <Logo height="75" viewBox="0 0 100 100" />
 
-    {width >= 1250 && <RoutesContainer>
+    <RoutesContainer>
       <GoesTo>
         <Link href="#">Home</Link>
       </GoesTo>
@@ -33,7 +40,11 @@ const Header: React.FC = () => {
       <GoesTo>
         <Link href="#">Contato</Link>
       </GoesTo>
-    </RoutesContainer>}
+    </RoutesContainer>
+
+    <HamburgerContainer>
+      <Hamburger onToggle={toggleHandler} />
+    </HamburgerContainer>
 
   </Container>
 }
