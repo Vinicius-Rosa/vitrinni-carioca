@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Row } from 'antd';
+// import { Row } from 'antd';
 import Button from '../Button';
 import Input from '../Input';
 import {
@@ -10,6 +10,7 @@ import {
   Title,
   Form,
   SubmitWrapper,
+  Row,
 } from './styles';
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
@@ -74,7 +75,8 @@ function Contact({ }: ContactProps) {
           </Title>
 
           <Form onSubmit={sendRequest}>
-            <Row justify="space-between" style={{ gap: "20px" }}>
+            <Row>
+            {/* <Row justify="space-between" style={{ gap: "20px", flexDirection: "column" }}> */}
               <Input label="Nome" name="name" value={formValues.name} onChange={handleChange} />
               <Input type="email" label="Email" name="email" value={formValues.email} onChange={handleChange} />
             </Row>
@@ -88,7 +90,7 @@ function Contact({ }: ContactProps) {
             />
 
             <SubmitWrapper>
-              <Button light removeShadow type="submit">Enviar solicitação</Button>
+              <Button light removeShadow type="submit" size="small">Enviar solicitação</Button>
             </SubmitWrapper>
           </Form>
         </ContactForm>

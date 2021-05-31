@@ -10,9 +10,10 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   light?: boolean;
   removeShadow?: boolean;
+  size?: 'small';
 }
 
-function Button({ children, type = "button", light = false, removeShadow = false }: ButtonProps) {
+function Button({ children, type = "button", light = false, removeShadow = false, size }: ButtonProps) {
   const [hovering, isHovering] = useState<boolean>(false);
 
   const { ref: buttonRef, inView } = useInView({ threshold: .2 });
@@ -43,6 +44,7 @@ function Button({ children, type = "button", light = false, removeShadow = false
         }}
       />
       <TheButton
+        size={size}
         type={type}
         light={light}
         ref={buttonRef}

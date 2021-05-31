@@ -29,11 +29,15 @@ export const Line = styled(motion.div) <Props>`
 
 export const Title = styled(motion.h1)`
   font-weight: bold;
-  font-size: 94px;
+  font-size: 5.85rem;
   color: ${({ theme }) => theme === 'light' ? "inherit" : "var(--secondary-color)"};
 
   margin-bottom: 0;
   width: 100%;
+
+  @media (max-width: 1240px) {
+    font-size: 3.5rem;
+  }
 `;
 
 export const TitleShadow = styled(motion.h1) <Props>`
