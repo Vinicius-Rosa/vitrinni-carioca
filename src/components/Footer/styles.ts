@@ -19,6 +19,8 @@ export const ColumnWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    flex-wrap: wrap;
 `;
 
 export const Column = styled(motion.div)`

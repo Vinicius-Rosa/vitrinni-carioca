@@ -25,6 +25,10 @@ export const Container = styled.div<Props>`
     }
 `;
 
+export const ImgWrapper = styled.div`
+    position: relative;
+`;
+
 export const ImgShadow = styled(motion.div) <Props>`
     position: absolute;
     top: -20px;
@@ -44,12 +48,10 @@ export const ImgShadow = styled(motion.div) <Props>`
     opacity: 0.4;
 
     @media (max-width: 1240px) {
-        left: ${({ inverted }) => inverted ? "unset" : "10px"};
-        right: ${({ inverted }) => inverted ? "10px" : "unset"};
+        left: ${({ inverted }) => inverted ? "unset" : "15px"};
+        right: ${({ inverted }) => inverted ? "15px" : "unset"};
         
         top: -10px;
-        min-width: 290px;
-        width: 290px;
         min-height: 290px;
         height: 290px;
     }
@@ -70,11 +72,15 @@ export const Title = styled(motion.h1)`
     }
 
     @media (max-width: 1240px) {
+        text-align: center;
         font-size: 2rem;
+        margin-left: unset;
     }
 `;
 
 export const Img = styled(motion.div) <Props>`
+    position: relative;
+
     background-image: url(${({ img }) => img});
     background-repeat: no-repeat;
     background-position: center;

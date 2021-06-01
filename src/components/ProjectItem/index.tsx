@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Container, Img, ImgShadow, Title } from './styles';
+import { Container, ImgWrapper, Img, ImgShadow, Title } from './styles';
 
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
@@ -27,29 +27,31 @@ function ProjectItem({ images, title, inverted = false }: ProjectItemProps) {
 
   return (
     <Container inverted={inverted} ref={ref}>
-      <Img
-        img={images[0]}
-        overlay={images[1]}
+      <ImgWrapper>
+        <Img
+          img={images[0]}
+          overlay={images[1]}
 
-        animate={animation}
-        initial={{ y: 50, opacity: 0, }}
-        transition={{
-          type: "inerttia",
-          duration: 0.6,
-          delay: 0.2,
-        }}
-      />
-      <ImgShadow
-        inverted={inverted}
+          animate={animation}
+          initial={{ y: 50, opacity: 0, }}
+          transition={{
+            type: "inerttia",
+            duration: 0.6,
+            delay: 0.2,
+          }}
+        />
+        <ImgShadow
+          inverted={inverted}
 
-        animate={shadowAnimation}
-        initial={{ y: 50, opacity: 0, }}
-        transition={{
-          type: "inerttia",
-          duration: 0.6,
-          delay: 0.4,
-        }}
-      />
+          animate={shadowAnimation}
+          initial={{ y: 50, opacity: 0, }}
+          transition={{
+            type: "inerttia",
+            duration: 0.6,
+            delay: 0.4,
+          }}
+        />
+      </ImgWrapper>
       <Title
         animate={titleAnimation}
         initial={{ y: 50, opacity: 0, }}
