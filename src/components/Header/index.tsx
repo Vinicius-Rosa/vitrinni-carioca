@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     }}
   >
     <Link href="/">
-      <Logo height="75" viewBox="0 0 100 100" />
+      <Logo height="75" viewBox="0 0 100 100" style={{ cursor: "pointer" }} />
     </Link>
 
     <RoutesContainer>

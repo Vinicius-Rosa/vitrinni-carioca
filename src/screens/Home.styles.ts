@@ -13,6 +13,8 @@ export const Hero = styled.section`
   padding: 0 50px;
   margin: 0 auto;
 
+  overflow: hidden;
+
   @media (max-width: 1240px) {
     flex-direction: column-reverse;
     justify-content: center;
