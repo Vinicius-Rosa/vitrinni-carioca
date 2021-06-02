@@ -5,7 +5,15 @@ import { Fade as Hamburger } from 'hamburger-react'
 
 import Logo from '../../assets/logo.svg';
 
-import { Container, RoutesContainer, GoesTo, HamburgerContainer } from './styles';
+import {
+  Container,
+  RoutesContainer,
+  GoesTo,
+  HamburgerContainer,
+  Modal,
+  ModalContent,
+  Overlay
+} from './styles';
 
 const Header: React.FC = () => {
   const [toggle, isToggle] = React.useState<boolean>(false);
@@ -13,8 +21,6 @@ const Header: React.FC = () => {
   const toggleHandler = React.useCallback(() => {
     isToggle(current => !current)
   }, [])
-
-  console.log(toggle)
 
   return <Container
     initial={{ opacity: 0 }}
@@ -38,13 +44,31 @@ const Header: React.FC = () => {
         <Link href="#">Sobre</Link>
       </GoesTo>
       <GoesTo>
-        <Link href="#">Contato</Link>
+        <Link href="#contact">Contato</Link>
       </GoesTo>
     </RoutesContainer>
 
     <HamburgerContainer>
-      <Hamburger onToggle={toggleHandler} />
+      <Hamburger onToggle={toggleHandler} toggled={toggle} color={!!toggle ? "white" : "black"} />
     </HamburgerContainer>
+
+    <Modal visibility={toggle}>
+      <Overlay onClick={toggleHandler} />
+      <ModalContent>
+        <GoesTo onClick={toggleHandler}>
+          <Link href="#">Home</Link>
+        </GoesTo>
+        <GoesTo onClick={toggleHandler}>
+          <Link href="#">Projetos</Link>
+        </GoesTo>
+        <GoesTo onClick={toggleHandler}>
+          <Link href="#">Sobre</Link>
+        </GoesTo>
+        <GoesTo onClick={toggleHandler}>
+          <Link href="#contact">Contato</Link>
+        </GoesTo>
+      </ModalContent>
+    </Modal>
 
   </Container>
 }

@@ -50,7 +50,7 @@ function Contact({ }: ContactProps) {
   }, [inView]);
 
   return (
-    <Section>
+    <Section id="contact">
       <Container>
         <ContactForm
           ref={ref}

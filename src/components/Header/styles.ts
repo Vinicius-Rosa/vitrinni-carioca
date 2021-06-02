@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
+interface Props {
+    visibility: boolean;
+}
+
 export const Container = styled(motion.header)`
     max-width: 1200px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    /* height: 80px; */
 
     margin: 0 auto;
     padding: 10px 30px;
@@ -48,9 +50,65 @@ export const GoesTo = styled.li`
 `;
 
 export const HamburgerContainer = styled.div`
+    position: relative;    
     display: none;
     
+    z-index: 10;
+
     @media (max-width: 1240px) {
         display: block;
     }
+`;
+
+export const Modal = styled.div<Props>`
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    opacity: ${({ visibility }) => !!visibility ? 1 : 0};
+    pointer-events: ${({ visibility }) => !!visibility ? 'inherit' : 'none'};
+
+    z-index: 5;
+    transition: .4s;
+`;
+
+export const Overlay = styled.button`
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.8);
+
+    transition: .4s;
+`;
+
+export const ModalContent = styled.ul`
+    position: relative;
+    z-index: 10;
+
+    text-decoration: none;
+
+    & > li:not(:last-of-type){
+        border-right: unset;
+        padding-right: unset;
+    }
+
+    & > li > a {
+        font-size: 3rem;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+    }
+    
 `;

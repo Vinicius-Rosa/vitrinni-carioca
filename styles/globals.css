@@ -19,6 +19,10 @@
   src: url("../public/CaviarDreams.woff2") format("woff2");
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   padding: 0;
