@@ -31,14 +31,16 @@ const Header: React.FC = () => {
       delay: 1,
     }}
   >
-    <Logo height="75" viewBox="0 0 100 100" />
+    <Link href="/">
+      <Logo height="75" viewBox="0 0 100 100" />
+    </Link>
 
     <RoutesContainer>
       <GoesTo>
-        <Link href="#">Home</Link>
+        <Link href="/">Home</Link>
       </GoesTo>
       <GoesTo>
-        <Link href="#">Projetos</Link>
+        <Link href="/projetos">Projetos</Link>
       </GoesTo>
       <GoesTo>
         <Link href="#">Sobre</Link>
@@ -56,10 +58,10 @@ const Header: React.FC = () => {
       <Overlay onClick={toggleHandler} />
       <ModalContent>
         <GoesTo onClick={toggleHandler}>
-          <Link href="#">Home</Link>
+          <Link href="/">Home</Link>
         </GoesTo>
         <GoesTo onClick={toggleHandler}>
-          <Link href="#">Projetos</Link>
+          <Link href="/projetos">Projetos</Link>
         </GoesTo>
         <GoesTo onClick={toggleHandler}>
           <Link href="#">Sobre</Link>
