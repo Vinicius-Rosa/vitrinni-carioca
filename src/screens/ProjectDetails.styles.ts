@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Carousel as AntCarousel } from 'antd';
+import { motion } from 'framer-motion';
 
 interface Props {
     hovering: boolean;
@@ -15,7 +16,7 @@ export const Container = styled.section`
     box-sizing: content-box;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
     position: relative;
 
     display: flex;
@@ -102,10 +103,11 @@ export const Infos = styled.div`
 
     font-size: 1.2rem;
     max-width: 200px;
+
+    min-height: 320px;
 `;
 
-export const Item = styled.div`
-`;
+export const Item = styled(motion.div)``;
 
 export const ItemTitle = styled.h2``;
 

@@ -29,8 +29,8 @@ export default function Home() {
         router.push('/projetos')
     }, [router])
 
-    const brutalimgs = useMemo<string[]>(() => [img1, img1], []);
-    const images = useMemo<string[]>(() => brutalimgs.filter((_, i) => i <= 1) || [], [brutalimgs])
+    const rawImgs = useMemo<string[]>(() => [img1, img1], []);
+    const images = useMemo<string[]>(() => rawImgs.filter((_, i) => i <= 1) || [], [rawImgs])
 
     const { ref: descRef, inView } = useInView({ threshold: 1 });
     const descAnimation = useAnimation();
