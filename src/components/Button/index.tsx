@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactEventHandler, ReactNode, useEffect, useState } from 'react';
 
 import { Container, TheButton, Line, ShadowButton } from './styles';
 
@@ -11,9 +11,10 @@ interface ButtonProps {
   light?: boolean;
   removeShadow?: boolean;
   size?: 'small';
+  onClick?: ReactEventHandler;
 }
 
-function Button({ children, type = "button", light = false, removeShadow = false, size }: ButtonProps) {
+function Button({ children, type = "button", light = false, removeShadow = false, size, onClick }: ButtonProps) {
   const [hovering, isHovering] = useState<boolean>(false);
 
   const { ref: buttonRef, inView } = useInView({ threshold: .2 });
@@ -58,6 +59,7 @@ function Button({ children, type = "button", light = false, removeShadow = false
 
         onMouseOver={() => isHovering(true)}
         onMouseLeave={() => isHovering(false)}
+        onClick={onClick}
 
         // Prevent submit query
         value=""

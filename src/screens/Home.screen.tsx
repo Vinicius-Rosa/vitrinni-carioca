@@ -1,4 +1,6 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
+import { useRouter } from 'next/router'
+
 import {
     Container,
     Hero,
@@ -20,6 +22,13 @@ import { useAnimation } from "framer-motion";
 import ProjectItem from "../components/ProjectItem";
 
 export default function Home() {
+    const router = useRouter();
+
+    const handleRoute = useCallback(e => {
+        e.preventDefault()
+        router.push('/projetos')
+    }, [router])
+
     const brutalimgs = useMemo<string[]>(() => [img1, img1], []);
     const images = useMemo<string[]>(() => brutalimgs.filter((_, i) => i <= 1) || [], [brutalimgs])
 
@@ -64,7 +73,7 @@ export default function Home() {
                     <ProjectItem images={[img2, img1]} title="Apartamento Vila Velha - ES" />
 
                     <ButtonContainer>
-                        <Button light>Quero ver mais projetos</Button>
+                        <Button light onClick={handleRoute}>Quero ver mais projetos</Button>
                     </ButtonContainer>
                 </ProjectContainer>
             </ProjectSection>
