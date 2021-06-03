@@ -19,6 +19,7 @@ const useWindowSize = (): useWindowSizeProps => {
             })
         }
 
+        sizeHandler();
         window.addEventListener('resize', sizeHandler)
 
         return () => {
