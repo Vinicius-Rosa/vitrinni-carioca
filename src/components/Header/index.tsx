@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 
 import { Fade as Hamburger } from 'hamburger-react'
@@ -14,13 +14,28 @@ import {
   ModalContent,
   Overlay
 } from './styles';
+import { useRouter } from 'next/router';
 
 const Header: React.FC = () => {
+  const router = useRouter();
+
   const [toggle, isToggle] = React.useState<boolean>(false);
 
   const toggleHandler = React.useCallback(() => {
     isToggle(current => !current)
   }, [])
+
+  const redirect = useCallback(
+    hash => {
+      const element = document.querySelector(`#${hash}`);
+
+      if (element) element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+
+    }, [router])
 
   return <Container
     initial={{ opacity: 0 }}
@@ -43,10 +58,10 @@ const Header: React.FC = () => {
         <Link href="/projetos">Projetos</Link>
       </GoesTo>
       <GoesTo>
-        <Link href="#">Sobre</Link>
+        <Link href="">Sobre</Link>
       </GoesTo>
-      <GoesTo>
-        <Link href="#contact">Contato</Link>
+      <GoesTo onClick={() => redirect("contact")}>
+        <a>Contato</a>
       </GoesTo>
     </RoutesContainer>
 
@@ -66,8 +81,11 @@ const Header: React.FC = () => {
         <GoesTo onClick={toggleHandler}>
           <Link href="#">Sobre</Link>
         </GoesTo>
-        <GoesTo onClick={toggleHandler}>
-          <Link href="#contact">Contato</Link>
+        <GoesTo onClick={() => {
+          toggleHandler()
+          redirect("contact")
+        }}>
+          <a>Contato</a>
         </GoesTo>
       </ModalContent>
     </Modal>
