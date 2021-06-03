@@ -40,6 +40,7 @@ export const GoesTo = styled.li`
     }
 
     & > a:hover{
+        color: var(--tertiary-color);
         opacity: 0.8;
     }
 
@@ -72,8 +73,8 @@ export const Modal = styled.div<Props>`
     width: 100vw;
     height: 100vh;
 
-    opacity: ${({ visibility }) => !!visibility ? 1 : 0};
-    pointer-events: ${({ visibility }) => !!visibility ? 'inherit' : 'none'};
+    opacity: ${({ visibility }) => visibility ? 1 : 0};
+    pointer-events: ${({ visibility }) => visibility ? 'inherit' : 'none'};
 
     z-index: 5;
     transition: .4s;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import ProjectItem from '../components/ProjectItem';
 
 import img1 from '../assets/img1.png'
@@ -15,6 +16,10 @@ import {
 import Title from '../components/Title';
 
 function ProjectScreen() {
+  const router = useRouter();
+
+  const goesTo = () => router.push('/projetos/12345')
+
   return (
     <>
       <Container style={{ padding: '0 50px', paddingBottom: '50px' }}>
@@ -23,7 +28,7 @@ function ProjectScreen() {
       <Residentials>
         <Subtitle>Residenciais</Subtitle>
         <List>
-          <ProjectItem type="blank" images={[img1, img2]} title="Projeto" />
+          <ProjectItem type="blank" images={[img1, img2]} title="Projeto" seeMore={goesTo} />
           <ProjectItem type="blank" images={[img1, img2]} title="Nome do Projeto" />
           <ProjectItem type="blank" images={[img1, img2]} title="Nome do Projeto" />
           <ProjectItem type="blank" images={[img1, img2]} title="Nome do Projeto" />

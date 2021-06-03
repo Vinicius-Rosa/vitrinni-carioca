@@ -1,5 +1,5 @@
-import Project from '../../src/screens/Project.screen';
+import ProjectDetails from '../../src/screens/ProjectDetails.screen';
 
-const Projetos = () => <Project />
+const Projetos = () => <ProjectDetails />
 
 export default Projetos;

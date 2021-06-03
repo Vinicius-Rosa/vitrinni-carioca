@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { ReactEventHandler, useCallback, useEffect, useState } from 'react';
 import {
   Container,
   ImgWrapper,
@@ -19,9 +19,10 @@ interface ProjectItemProps {
   title: string;
   inverted?: boolean;
   type?: "default" | "blank";
+  seeMore?: ReactEventHandler;
 }
 
-function ProjectItem({ images, title, inverted = false, type = "default" }: ProjectItemProps) {
+function ProjectItem({ images, title, inverted = false, type = "default", seeMore }: ProjectItemProps) {
 
   const { ref, inView } = useInView({ threshold: .8 });
   const animation = useAnimation();
@@ -107,7 +108,7 @@ function ProjectItem({ images, title, inverted = false, type = "default" }: Proj
       <BlankTitle hovering={hovering}>
         {title}
       </BlankTitle>
-      <BlankButton hovering={hovering}>Ver mais</BlankButton>
+      <BlankButton hovering={hovering} onClick={seeMore}>Ver mais</BlankButton>
     </BlankImgWrapper>
   )
 };
