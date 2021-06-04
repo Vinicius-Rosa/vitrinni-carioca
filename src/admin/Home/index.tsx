@@ -1,5 +1,7 @@
 import { Button, Input, Form } from 'antd';
-import React, { useCallback, useState } from 'react';
+import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
+import useFetch from '../../hooks/useFetch';
 import { Container, Header } from './styles';
 
 interface Col {
@@ -29,19 +31,28 @@ const initialValues: IInitialValues = {
 const { useForm } = Form;
 
 const Home: React.FC = () => {
+    if (typeof window === 'undefined') return <></>
+
     const [form] = useForm()
     const [sending, isSending] = useState<boolean>(false);
 
-    const handleSubmit = useCallback(() => {
+    useEffect(() => {
+        (async () => {
+            const response = await axios.get('https://vitrinniapi.herokuapp.com/api/home')
+            const { title, text } = response.data
+
+            form.setFieldsValue({ title, text })
+        })()
+    }, [form])
+
+    const handleSubmit = useCallback(async () => {
         if (!!sending) return
 
         isSending(true);
 
         const payload = form.getFieldsValue();
 
-        /**
-         * HERE GOES THE PROMISE
-         */
+        axios.post('https://vitrinniapi.herokuapp.com/api/home/update', payload)
 
         setTimeout(() => {
             isSending(false);
@@ -79,7 +90,7 @@ const Home: React.FC = () => {
                 name="text"
                 rules={[{ required: true, message: 'Por favor insira a descrição!' }]}
             >
-                <Input.TextArea />
+                <Input.TextArea style={{ height: '100px' }} />
             </Form.Item>
 
             <Form.Item>

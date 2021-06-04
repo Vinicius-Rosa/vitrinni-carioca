@@ -21,7 +21,12 @@ import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 import ProjectItem from "../components/ProjectItem";
 
-export default function Home() {
+interface HomeProps {
+    title: string;
+    text: string;
+}
+
+export default function Home({ title, text }) {
     const router = useRouter();
 
     const handleRoute = useCallback(e => {
@@ -43,7 +48,7 @@ export default function Home() {
         <Container>
             <Hero>
                 <Content>
-                    <Title>Bem-vindo</Title>
+                    <Title>{title}</Title>
 
                     <ShortDescription
                         ref={descRef}
@@ -55,7 +60,8 @@ export default function Home() {
                             delay: 1,
                         }}
                     >
-                        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                        {/* Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. */}
+                        {text}
                     </ShortDescription>
 
                     <Button>Descubra nossos diferenciais</Button>
