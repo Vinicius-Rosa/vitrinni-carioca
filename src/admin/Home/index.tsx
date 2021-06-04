@@ -2,6 +2,7 @@ import { Button, Input, Form } from 'antd';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import useFetch from '../../hooks/useFetch';
+import { getToken } from '../../services/auth';
 import { Container, Header } from './styles';
 
 interface Col {
@@ -34,6 +35,8 @@ const Home: React.FC = () => {
     if (typeof window === 'undefined') return <></>
 
     const [form] = useForm()
+    const token = getToken()
+
     const [sending, isSending] = useState<boolean>(false);
 
     useEffect(() => {
@@ -52,11 +55,18 @@ const Home: React.FC = () => {
 
         const payload = form.getFieldsValue();
 
-        axios.post('https://vitrinniapi.herokuapp.com/api/home/update', payload)
-
-        setTimeout(() => {
-            isSending(false);
-        }, 2000);
+        axios.post('https://vitrinniapi.herokuapp.com/api/home/update',
+            payload, {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+            .then(res => {
+                isSending(false);
+            })
+            .catch(err => {
+                isSending(false);
+            })
 
     }, [])
 
@@ -90,7 +100,7 @@ const Home: React.FC = () => {
                 name="text"
                 rules={[{ required: true, message: 'Por favor insira a descrição!' }]}
             >
-                <Input.TextArea style={{ height: '100px' }} />
+                <Input.TextArea style={{ height: '150px' }} />
             </Form.Item>
 
             <Form.Item>
