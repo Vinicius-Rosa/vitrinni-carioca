@@ -1,7 +1,6 @@
 import { Button, Input, Form } from 'antd';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
-import useFetch from '../../hooks/useFetch';
 import { getToken } from '../../services/auth';
 import { Container, Header } from './styles';
 
@@ -74,7 +73,7 @@ const Home: React.FC = () => {
 
     return <Container>
         <Header>
-            <h1>Bem-vindo, Helcio!</h1>
+            <h1>Bem-vindo(a)!</h1>
             <p>Esta sessão é responsável pelos conteúdos da página principal do site.</p>
         </Header>
 
