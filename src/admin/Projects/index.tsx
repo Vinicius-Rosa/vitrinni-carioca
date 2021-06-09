@@ -9,6 +9,7 @@ import { useForm } from 'antd/lib/form/Form';
 
 import { Container } from './styles';
 import { Header } from '../Home/styles';
+import moment from 'moment';
 
 interface ColumnProps {
     title: string;
@@ -41,6 +42,7 @@ const Projects: React.FC = () => {
     const [projectOptions, setProjectOptions] = useState<any[]>([]);
 
     const [selectedId, setSelectedId] = useState<string>("");
+    const [category, setCategory] = useState<number | null>(null);
 
     useEffect(() => {
         (async () => {
@@ -62,10 +64,13 @@ const Projects: React.FC = () => {
     }, [])
 
     const handleEdit = useCallback(item => {
-        console.log(item)
         setSelectedId(item.id);
-        delete item.date
-        form.setFieldsValue({ ...item, highlight: item.highlight === true })
+        setCategory(item.category_id)
+        form.setFieldsValue({
+            ...item,
+            highlight: item.highlight === true,
+            date: moment(item.date, 'DD/MM/YYYY')
+        })
     }, [])
 
     const handleSubmit = useCallback(async () => {
@@ -73,13 +78,21 @@ const Projects: React.FC = () => {
 
         isSending(true);
 
-        const payload = { ...form.getFieldsValue(), id: selectedId };
+        const formValues = form.getFieldsValue();
+
+        let payload = {
+            ...formValues,
+            category,
+            highlight: formValues.highlight ? 1 : 0,
+            area: Number(formValues.area),
+            date: moment(formValues.date).format('YYYY-MM-DD HH:mm:ss')
+        };
+
+        const url: string = !!selectedId
+            ? `https://vitrinniapi.herokuapp.com/api/projects/update/${selectedId}`
+            : 'https://vitrinniapi.herokuapp.com/api/projects';
 
         console.log("payload", payload)
-
-        const url: string = selectedId
-            ? `https://vitrinniapi.herokuapp.com/api/projects/update/${selectedId}`
-            : 'https://vitrinniapi.herokuapp.com/api/projects/update';
 
         axios.post(url,
             payload, {
@@ -89,12 +102,14 @@ const Projects: React.FC = () => {
         })
             .then(res => {
                 isSending(false);
+                setSelectedId(null);
             })
             .catch(err => {
                 isSending(false);
+                setSelectedId(null);
             })
 
-    }, [sending, selectedId])
+    }, [sending, selectedId, category])
 
     const errorHandler = useCallback(error => { }, [])
 
@@ -171,7 +186,7 @@ const Projects: React.FC = () => {
                     name="date"
                     rules={[{ required: true, message: 'Por favor insira uma data!' }]}
                 >
-                    <DatePicker format='DD/MM/YYYY' />
+                    <DatePicker format='DD/MM/YYYY' onChange={handleSubmit} />
                 </Form.Item>
                 <Form.Item
                     label="Título"
@@ -197,7 +212,7 @@ const Projects: React.FC = () => {
                     name="category"
                     rules={[{ required: true, message: 'Por favor insira uma data!' }]}
                 >
-                    <Select placeholder="Selecionar...">{optionsRender}</Select>
+                    <Select placeholder="Selecionar..." onChange={e => setCategory(Number(e))}>{optionsRender}</Select>
                 </Form.Item>
                 <Form.Item
                     label="Local"
