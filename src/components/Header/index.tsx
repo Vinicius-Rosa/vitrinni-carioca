@@ -15,6 +15,9 @@ import {
   Overlay
 } from './styles';
 import { useRouter } from 'next/router';
+import LogoHandler from './LogoHandler';
+
+// const LogoHandler: React.FC = props => <Logo {...props} />
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -37,6 +40,12 @@ const Header: React.FC = () => {
 
     }, [router])
 
+  const props = {
+    height: "75",
+    viewBox: "0 0 100 100",
+    style: { cursor: "pointer" }
+  }
+
   return <Container
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
@@ -46,9 +55,7 @@ const Header: React.FC = () => {
       delay: 1,
     }}
   >
-    <Link href="/">
-      <Logo height="75" viewBox="0 0 100 100" style={{ cursor: "pointer" }} />
-    </Link>
+    <LogoHandler {...props} />
 
     <RoutesContainer>
       <GoesTo>
