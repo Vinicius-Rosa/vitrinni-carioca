@@ -23,9 +23,9 @@ const Sidebar: React.FC = () => {
             <Menu.Item key="about">
                 <Link href="/admin/sobre">Sobre</Link>
             </Menu.Item>
-            <Menu.Item key="contact">
+            {/* <Menu.Item key="contact">
                 <Link href="/admin/contato">Contato</Link>
-            </Menu.Item>
+            </Menu.Item> */}
         </Menu>
     );
 }

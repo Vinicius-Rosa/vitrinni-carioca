@@ -67,7 +67,7 @@ const Home: React.FC = () => {
                 isSending(false);
             })
 
-    }, [])
+    }, [token])
 
     const errorHandler = useCallback(error => { }, [])
 

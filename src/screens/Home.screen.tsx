@@ -24,9 +24,10 @@ import ProjectItem from "../components/ProjectItem";
 interface HomeProps {
     title: string;
     text: string;
+    highlights: any[];
 }
 
-export default function Home({ title, text }) {
+export default function Home({ title, text, highlights }: HomeProps) {
     const router = useRouter();
 
     const handleRoute = useCallback(e => {
@@ -39,6 +40,8 @@ export default function Home({ title, text }) {
 
     const { ref: descRef, inView } = useInView({ threshold: 1 });
     const descAnimation = useAnimation();
+
+    const getImages = useCallback(images => images.length > 0 ? [images[0], images[1]] : [], [])
 
     useEffect(() => {
         if (!!inView) descAnimation.start({ y: 0, opacity: 1, });
@@ -60,11 +63,10 @@ export default function Home({ title, text }) {
                             delay: 1,
                         }}
                     >
-                        {/* Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. */}
                         {text}
                     </ShortDescription>
 
-                    <Button>Descubra nossos diferenciais</Button>
+                    <Button onClick={handleRoute}>Descubra nossos diferenciais</Button>
                 </Content>
 
                 <Carousel images={images} />
@@ -74,9 +76,8 @@ export default function Home({ title, text }) {
                 <ProjectContainer>
                     <Title theme={Theme.dark}>Projetos</Title>
 
-                    <ProjectItem images={[img2, img1]} title="Residência Guarapari 2" />
-                    <ProjectItem inverted images={[img2, img1]} title="Corporativo Barra da Tijuca" />
-                    <ProjectItem images={[img2, img1]} title="Apartamento Vila Velha - ES" />
+                    {!!highlights && highlights.map(({ project_images, title }, i) =>
+                        <ProjectItem key={i} images={getImages(project_images)} title={title} inverted={(i + 1) % 2 == 0} />)}
 
                     <ButtonContainer>
                         <Button light onClick={handleRoute}>Quero ver mais projetos</Button>

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 
 import { getToken } from '../../services/auth';
+import UploadImg from '../../components/UploadImg';
 
 import { Button, DatePicker, Form, Input, Row, Select, Switch, Table } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
@@ -59,6 +60,8 @@ const Projects: React.FC = () => {
                 highlight: item.highlight === 1 ? true : false
             }))
 
+            console.log("formatted", formatted)
+
             setDataSource(formatted)
         })()
     }, [])
@@ -91,8 +94,6 @@ const Projects: React.FC = () => {
         const url: string = !!selectedId
             ? `https://vitrinniapi.herokuapp.com/api/projects/update/${selectedId}`
             : 'https://vitrinniapi.herokuapp.com/api/projects';
-
-        console.log("payload", payload)
 
         axios.post(url,
             payload, {
@@ -162,6 +163,15 @@ const Projects: React.FC = () => {
     const optionsRender = useMemo(() => projectOptions.map(
         ({ id, name }) => <Select.Option key={id} value={id}>{name}</Select.Option>
     ), [projectOptions])
+
+    const formatImgs = useCallback((imgs: any[]) => imgs.map(i => {
+        const name = i.path.replace("images/", '');
+        return {
+            uuid: i.id,
+            name,
+            url: `https://vitrinniapi.herokuapp.com/api/${i.path}`
+        }
+    }), [])
 
     return <Container>
         <Header>
@@ -252,7 +262,13 @@ const Projects: React.FC = () => {
             dataSource={dataSource}
             columns={columns}
             expandable={{
-                expandedRowRender: ({ desc }) => <p style={{ margin: 0 }}>{desc}</p>,
+                expandedRowRender: ({ desc, id, project_images }) => <>
+                    <Row>
+                        <UploadImg images={formatImgs(project_images)} id={id} />
+                    </Row>
+                    <br />
+                    <p style={{ margin: 0 }}>{desc}</p>
+                </>,
             }}
         />
     </Container>;

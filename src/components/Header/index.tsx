@@ -65,7 +65,7 @@ const Header: React.FC = () => {
         <Link href="/projetos">Projetos</Link>
       </GoesTo>
       <GoesTo>
-        <Link href="">Sobre</Link>
+        <Link href="/sobre">Sobre</Link>
       </GoesTo>
       <GoesTo onClick={() => redirect("contact")}>
         <a>Contato</a>
@@ -86,7 +86,7 @@ const Header: React.FC = () => {
           <Link href="/projetos">Projetos</Link>
         </GoesTo>
         <GoesTo onClick={toggleHandler}>
-          <Link href="#">Sobre</Link>
+          <Link href="/sobre">Sobre</Link>
         </GoesTo>
         <GoesTo onClick={() => {
           toggleHandler()
