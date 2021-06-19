@@ -35,6 +35,8 @@ export default function Home({ title, text, highlights }: HomeProps) {
         router.push('/projetos')
     }, [router])
 
+    const goesTo = id => router.push(`/projetos/${id}`)
+
     const rawImgs = useMemo<string[]>(() => [img1, img1], []);
     const images = useMemo<string[]>(() => rawImgs.filter((_, i) => i <= 1) || [], [rawImgs])
 
@@ -76,8 +78,14 @@ export default function Home({ title, text, highlights }: HomeProps) {
                 <ProjectContainer>
                     <Title theme={Theme.dark}>Projetos</Title>
 
-                    {!!highlights && highlights.map(({ project_images, title }, i) =>
-                        <ProjectItem key={i} images={getImages(project_images)} title={title} inverted={(i + 1) % 2 == 0} />)}
+                    {!!highlights && highlights.map(({ id, project_images, title }, i) =>
+                        <ProjectItem
+                            key={i}
+                            images={getImages(project_images)}
+                            title={title}
+                            inverted={(i + 1) % 2 == 0}
+                            seeMore={() => goesTo(id)}
+                        />)}
 
                     <ButtonContainer>
                         <Button light onClick={handleRoute}>Quero ver mais projetos</Button>

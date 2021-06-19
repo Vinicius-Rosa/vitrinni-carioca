@@ -50,7 +50,7 @@ function Item<ItemProps>({ label, value }) {
   </InnerItem>
 }
 
-function ProjectDetailsScreen() {
+function ProjectDetailsScreen({ local, title, area, date, category, project_images }) {
   const ref = useRef(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [hovering, isHovering] = useState<boolean>(false);
@@ -66,16 +66,26 @@ function ProjectDetailsScreen() {
     ref.current.next();
   }, [])
 
-  const images = [1, 2]
-
   const imagesRender = useMemo<ReactElement[]>(
-    () => images.map(
-      i => <ImgWrapper>
-        <Img src={i === 1 ? img1 : img2} alt="" />
-      </ImgWrapper>)
-    , [images])
+    () => project_images.map(({ path }) => <ImgWrapper>
+      <Img src={`https://vitrinniapi.herokuapp.com/storage/${path}`} alt="" />
+    </ImgWrapper>)
+    , [project_images])
 
-  const pages = useMemo(() => images.length, [images])
+  const pages = useMemo(() => project_images.length, [project_images])
+
+  const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+  const formattedDate = useMemo(() => {
+    const auxiliarDate = new Date(date);
+
+    const month = monthNames[auxiliarDate.getMonth()];
+    const year = auxiliarDate.getFullYear()
+
+    return `${month} - ${year}`
+  }, [date, monthNames])
+
 
   useEffect(() => {
     if (!!inView) animation.start({ y: 0, opacity: 1, });
@@ -107,7 +117,7 @@ function ProjectDetailsScreen() {
 
       <Content>
         <div style={{ flex: 2 }}>
-          <Title style={{ color: "var(--tertiary-color)", fontWeight: "bold" }}
+          <Title style={{ color: "var(--tertiary-color)", fontWeight: "bold", cursor: 'inherit' }}
             animate={animation || { y: 0, opacity: 1 }}
             initial={{ y: 50, opacity: 0, }}
             transition={{
@@ -116,15 +126,15 @@ function ProjectDetailsScreen() {
               delay: 0.6,
             }}
           >
-            Residência Guarapari 2
+            {title}
           </Title>
         </div>
 
         <Infos>
-          <Item label="Tipo" value="Residencial" />
-          <Item label="Local" value="Guarapari - ES" />
-          <Item label="Data" value="Janeiro - 2021" />
-          <Item label="Área" value="30m²" />
+          <Item label="Tipo" value={category} />
+          <Item label="Local" value={local} />
+          <Item label="Data" value={formattedDate} />
+          <Item label="Área" value={`${area}m²`} />
         </Infos>
       </Content>
     </Container>

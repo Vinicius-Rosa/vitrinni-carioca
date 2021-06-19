@@ -22,7 +22,7 @@ interface ProjectItemProps {
   seeMore?: ReactEventHandler;
 }
 
-function ProjectItem({ images, title, inverted = false, type = "default", seeMore }: ProjectItemProps) {
+function ProjectItem({ images, title, inverted = false, type = "default", seeMore = () => { } }: ProjectItemProps) {
 
   const { ref, inView } = useInView({ threshold: .8 });
   const animation = useAnimation();
@@ -82,6 +82,8 @@ function ProjectItem({ images, title, inverted = false, type = "default", seeMor
           duration: 0.5,
           delay: 0.2,
         }}
+
+        onClick={seeMore}
       >
         {title}
       </Title>
