@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
             >
                 <Input />
             </Form.Item>
-            
+
 
             <Form.Item>
                 <Button type="primary" htmlType="submit" loading={sending}>

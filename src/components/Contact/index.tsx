@@ -14,6 +14,8 @@ import {
 } from './styles';
 import { useInView } from 'react-intersection-observer';
 import { useAnimation } from 'framer-motion';
+import axios from 'axios';
+import { message } from 'antd';
 
 interface ContactProps {
 }
@@ -28,7 +30,7 @@ function Contact({ }: ContactProps) {
     name: "",
     email: "",
     subject: "",
-    message: "",
+    msg: "",
   });
 
   const handleChange = useCallback(({ value, name, }) => {
@@ -36,9 +38,20 @@ function Contact({ }: ContactProps) {
   }, [])
 
 
+  const success = () => {
+    message.success('Mensagem enviada com sucesso!');
+  };
+
+  const error = () => {
+    message.error('Ops! Não foi possível enviar a mensagem');
+  };
+
   const sendRequest = useCallback(e => {
     e.preventDefault();
-    console.log("formValues", formValues);
+    axios.post('https://vitrinniapi.herokuapp.com/api/contact', formValues)
+      .then(res => success())
+      .catch(err => error())
+
   }, [formValues])
 
   useEffect(() => {
@@ -83,8 +96,8 @@ function Contact({ }: ContactProps) {
             <Input
               type="textarea"
               label="Mensagem"
-              name="message"
-              value={formValues.message}
+              name="msg"
+              value={formValues.msg}
               onChange={handleChange}
             />
 
