@@ -1,6 +1,7 @@
 # Vitrinni Carioca 📏📐
 
 Hi, folks! How is it going? 😉
+
 This project is a system case for an architect. Designed by [my friend João](https://www.instagram.com/joaodrago.designer), developed by [my other friend Maxwell](https://github.com/Maxwell-Ferreira) and me 😁.
 
 ## Check out the website design
